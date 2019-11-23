@@ -3,7 +3,7 @@ const errorHelper = ({ type, error }, res, code) =>
 {
     switch (type) {
     case "JSON":
-        return res.status(code).send({ error })
+        return res.status(code).json({ error })
     default:
         return res.status(code).send({ error })
     }
