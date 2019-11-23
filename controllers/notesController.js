@@ -3,8 +3,8 @@ const noteService = require('../services/noteService')
 
 notesController.get('/', (req, res, next) => {
     noteService.allNotes()
-        .then(note => {
-            res.json(note.map(note => note.toJSON()))
+        .then(notes => {
+            res.json(notes.map(note => note.toJSON()))
         })
         .catch(err => next(err))
 })
