@@ -1,5 +1,4 @@
 const mongoose = require('mongoose')
-const mongooseSchemaHelper = require('./mongooseSchemaHelper')
 
 const courseSchema = mongoose.Schema({
     'name': {
@@ -8,6 +7,14 @@ const courseSchema = mongoose.Schema({
     }
 })
 
-mongooseSchemaHelper(courseSchema, '_id', '_id', '__v')
+courseSchema.set('toJSON', {
+    virtuals: true,
+    transform: (document, requestedObj) => {
+        requestedObj.id = requestedObj._id.toString()
+        delete requestedObj._id
+        delete requestedObj.__v
+    }
+})
+
 
 module.exports = mongoose.model('Course', courseSchema)
