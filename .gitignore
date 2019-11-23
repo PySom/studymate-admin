@@ -1,0 +1,7 @@
+.env
+node_modules
+.eslintrc.js
+obj
+bin
+StudyMateAdmin.njsproj
+StudyMateAdmin.njsproj.user
